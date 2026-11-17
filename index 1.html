@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuis Receh: Jepang di Perang Dunia II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Serif+JP:wght@900&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<style>
+:root{--bg:#f2f4f7;--pn:#fff;--ink:#10233f;--mut:#51637a;--red:#c8102e;--gold:#e0a21b;--ln:rgba(16,35,63,.18);--ok:#0b7a4b;--okb:#dcf3e7;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a2e;--pn:#12294a;--ink:#eef3f8;--mut:#a9bbcf;--red:#ff4d66;--gold:#f6c453;--ln:rgba(238,243,248,.22);--ok:#74e3a9;--okb:#0e4733}}
+:root[data-theme="dark"]{--bg:#0a1a2e;--pn:#12294a;--ink:#eef3f8;--mut:#a9bbcf;--red:#ff4d66;--gold:#f6c453;--ln:rgba(238,243,248,.22);--ok:#74e3a9;--okb:#0e4733}
+*{box-sizing:border-box}
+html{font-size:clamp(15px,min(1.45vw,2.7vh),34px);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:500 1rem/1.5 "Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-conic-gradient(from 0deg at 92% 0%,rgba(200,16,46,.08) 0 7.5deg,transparent 0 15deg)}
+header,main{position:relative}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem 1.6rem;max-width:90rem;margin:0 auto}
+.tt{display:flex;align-items:center;gap:.6rem;font:400 1rem "Dela Gothic One","Zen Kaku Gothic New",sans-serif}
+.sun{display:block;flex:none;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--red) 0 28%,transparent 29%),repeating-conic-gradient(var(--red) 0 11.25deg,transparent 0 22.5deg)}
+#dots{display:flex;gap:.6rem}
+.dt{position:relative;width:1.05rem;height:1.05rem;padding:0;border-radius:50%;border:2px solid var(--ink);background:transparent;cursor:pointer}
+.dt::after{content:"";position:absolute;inset:-.5rem}
+.dt.dn{background:var(--ink)}.dt.on{background:var(--red);border-color:var(--red);transform:scale(1.3)}
+.mn{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem;padding:.4rem 1.6rem 1.8rem;max-width:90rem;margin:0 auto;align-items:start}
+.nm{margin:0 0 .3rem;color:var(--red);font-weight:700}
+.q{font:400 1.8rem/1.3 "Dela Gothic One","Zen Kaku Gothic New",system-ui,sans-serif;margin:0 0 1.1rem}
+.op{display:flex;gap:.9rem;align-items:center;width:100%;text-align:left;padding:.7rem 1rem;margin:0 0 .6rem;background:var(--pn);color:var(--ink);border:2px solid var(--ln);border-radius:.9rem;font:inherit;cursor:pointer;min-height:3em}
+.op b{flex:none;width:2.1em;height:2.1em;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--pn);font:400 1rem "Dela Gothic One",sans-serif}
+.op:hover{border-color:var(--red)}
+.done .op{pointer-events:none}
+.op.ok{border-color:var(--ok);background:var(--okb)}.op.ok b{background:var(--ok);color:var(--bg)}
+.op.no{border-color:var(--red)}.op.no b{background:var(--red);color:#fff}
+.op.dim{opacity:.45}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ct{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.9rem}
+.btn{font:inherit;font-weight:700;min-height:3em;padding:0 1.4em;border-radius:.8rem;border:2px solid var(--ln);background:transparent;color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--red);border-color:var(--red);color:#fff}
+.art{position:relative;display:grid;place-items:center;padding:1rem;background:var(--pn);border:2px solid var(--ln);border-radius:1.2rem;overflow:hidden}
+.art::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 82% 14%,rgba(200,16,46,.1) 0 7.5deg,transparent 0 15deg)}
+.art svg{position:relative;width:100%;height:auto;max-height:36vh}
+.f{fill:var(--ink)}.rd{fill:var(--red)}
+.s{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}.r{stroke:var(--red)}
+.bd{position:absolute;right:.8rem;top:.8rem;min-width:3.4em;height:3.4em;padding:0 .7em;border-radius:2em;display:grid;place-items:center;font:900 1.25rem "Noto Serif JP",serif;background:var(--ln);color:var(--mut)}
+.done .bd{background:var(--red);color:#fff}
+.bd.st{text-decoration:line-through;text-decoration-thickness:.12em}
+.an{display:none;margin-top:1rem;padding:1rem 1.2rem;background:var(--pn);border:2px solid var(--ok);border-radius:1.2rem}
+.done .an{display:block;animation:up .45s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(.8rem)}to{opacity:1;transform:none}}
+.an h3{margin:0 0 .4rem;font:400 1.2rem/1.3 "Dela Gothic One","Zen Kaku Gothic New",sans-serif;color:var(--ok)}
+.an p{margin:.25rem 0;font-size:.92rem}
+.an .tip{margin-top:.7rem;padding-left:.8rem;border-left:4px solid var(--gold);color:var(--mut)}
+.hero{display:grid;justify-items:center;align-content:center;text-align:center;gap:1.2rem;min-height:68vh;padding:2rem 1.5rem 3rem}
+.hero .sun{width:min(14rem,42vw)}
+.hero h1{margin:0;font:400 2.6rem/1.2 "Dela Gothic One","Zen Kaku Gothic New",sans-serif;max-width:20ch}
+.hero p{margin:0;max-width:34rem;color:var(--mut)}
+.sk{font:400 4rem/1 "Dela Gothic One",sans-serif;color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:40rem}
+.chip{padding:.3rem .9rem;border:2px solid var(--ln);border-radius:2em;background:var(--pn);font-size:.9rem}
+@media (max-width:760px){.mn{grid-template-columns:1fr;padding:.4rem 1rem 1.2rem}.hd{padding:.8rem 1rem}.q{font-size:1.45rem}.hero h1{font-size:2rem}.art svg{max-height:30vh}}
+
+/* ===== Wajib landscape: di layar sentuh yang potret, tampilan diputar 90° ===== */
+html.rot{height:100%;overflow:hidden}
+html.rot body{position:fixed;left:0;top:0;transform-origin:0 0;transform:translateX(var(--pw)) rotate(90deg)}
+/* ===== Mode landscape: seluruh kuis muat satu layar tanpa scroll halaman ===== */
+html.ls body{display:flex;flex-direction:column;width:var(--sw);height:var(--sh);min-height:0;overflow:hidden}
+html.ls .hd{flex:none;width:100%;padding:.4rem max(1.2rem,env(safe-area-inset-right,0px)) .15rem max(1.2rem,env(safe-area-inset-left,0px))}
+html.ls .tt{font-size:.95rem}html.ls .tt .sun{width:1.5rem!important}
+html.ls .dt{width:.9rem;height:.9rem}
+html.ls #app{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+html.ls .mn{flex:1 1 0;min-height:0;width:100%;grid-template-columns:1.08fr .92fr;grid-template-rows:minmax(0,1fr);gap:1.2rem;align-items:stretch;padding:.2rem max(1.2rem,env(safe-area-inset-right,0px)) .7rem max(1.2rem,env(safe-area-inset-left,0px))}
+html.ls .mn>div{min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
+html.ls .mn>div:last-child{gap:.7rem}
+html.ls .nm{font-size:.88rem;margin:0 0 .15rem}
+html.ls .q{font-size:1.3rem;line-height:1.3;margin:0 0 .6rem}
+html.ls .op{flex:none;gap:.7rem;padding:.25rem .8rem;margin:0 0 .4rem;min-height:2.9em;border-radius:.8rem}
+html.ls .op b{width:1.9em;height:1.9em;font-size:.9rem}
+html.ls .ct{margin-top:auto;padding-top:.5rem;gap:.6rem}
+html.ls .btn{min-height:2.7em}
+html.ls .art{flex:1 1 0;min-height:5rem;display:block;padding:0}
+html.ls .art svg{position:absolute;inset:.6rem;width:calc(100% - 1.2rem);height:calc(100% - 1.2rem);max-height:none}
+html.ls .bd{right:.6rem;top:.6rem;min-width:2.8em;height:2.8em;font-size:1rem}
+html.ls .an{flex:0 1 auto;margin-top:0;padding:.6rem .9rem;overflow-y:auto;border-radius:1rem}
+html.ls .an h3{font-size:1rem;margin-bottom:.25rem}
+html.ls .an p{font-size:.86rem;line-height:1.4;margin:.2rem 0}
+html.ls .an .tip{margin-top:.4rem}
+html.ls .hero{flex:1 1 0;min-height:0;width:100%;max-width:70rem;margin:0 auto;grid-template-columns:auto minmax(0,1fr);column-gap:max(2rem,calc(var(--sw)*.06));row-gap:.7rem;align-content:center;justify-items:start;text-align:left;padding:.5rem max(1.5rem,env(safe-area-inset-right,0px)) .8rem max(1.5rem,env(safe-area-inset-left,0px))}
+html.ls .hero>:first-child{grid-row:1/span 4;align-self:center;justify-self:center}
+html.ls .hero .sun{width:min(12rem,calc(var(--sh)*.46))}
+html.ls .hero h1{font-size:2.1rem;max-width:18ch}
+html.ls .hero p{font-size:.95rem;max-width:30rem}
+html.ls .sk{font-size:3.6rem}
+html.ls .chips{justify-content:flex-start;max-width:30rem}
+html.ls .chip{padding:.2rem .7rem;font-size:.85rem}
+@media (prefers-reduced-motion:reduce){.done .an{animation:none}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="tt"><i class="sun" style="width:1.8rem"></i>Kuis Receh Jepang di PD II</div><nav id="dots" aria-label="Kemajuan soal"></nav></header>
+<main id="app"></main>
+<script>
+const L="ABCD",$=s=>document.querySelector(s);
+const shipG=`<g class="f"><path d="M14 150h372l-34 30H52z"/><rect x="164" y="112" width="70" height="38"/><rect x="186" y="78" width="26" height="34"/><rect x="194" y="46" width="10" height="32"/><rect x="62" y="132" width="44" height="18" rx="5"/><rect x="108" y="128" width="44" height="22" rx="5"/><rect x="262" y="128" width="44" height="22" rx="5"/><rect x="308" y="132" width="44" height="18" rx="5"/></g><path class="s" d="M62 138H28M62 145H28M352 138h30M352 145h30"/>`;
+const W=y=>`<path class="s r" d="M0 ${y}q25-16 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0"/>`;
+const drum=(x,y)=>`<rect class="f" x="${x}" y="${y}" width="90" height="100" rx="14"/><rect class="rd" x="${x}" y="${y+22}" width="90" height="8"/><rect class="rd" x="${x}" y="${y+70}" width="90" height="8"/>`;
+const SV={
+ship:`<svg viewBox="0 0 400 240" role="img" aria-label="Siluet kapal perang">${shipG}${W(206)}</svg>`,
+drums:`<svg viewBox="0 0 400 240" role="img" aria-label="Tumpukan tong minyak dengan setetes minyak merah">${drum(55,128)}${drum(155,128)}${drum(255,128)}${drum(105,26)}${drum(205,26)}<path class="rd" d="M356 44q18 26 0 40q-18-14 0-40z"/></svg>`,
+sunplane:`<svg viewBox="0 0 400 240" role="img" aria-label="Pesawat tempur di depan matahari terbit"><circle class="rd" cx="200" cy="120" r="80"/><g class="f"><ellipse cx="200" cy="120" rx="130" ry="13"/><path d="M185 120L150 36h42l40 84zM185 120L150 204h42l40-84z"/><path d="M318 120l22-34h16l-12 34 12 34h-16z"/></g><path class="s" d="M70 98v44"/></svg>`,
+volcano:`<svg viewBox="0 0 400 240" role="img" aria-label="Gunung berapi di pulau Jawa dengan matahari terbit"><circle class="rd" cx="316" cy="86" r="46"/><g class="f"><path d="M30 204L136 104q22-20 44 0L290 204z"/><path d="M238 204l56-62q14-14 28 0l60 62z"/></g><path class="s" d="M158 88q-16-14 0-28t0-26"/>${W(218)}</svg>`,
+dive:`<svg viewBox="0 0 400 240" role="img" aria-label="Tiga bom jatuh ke kapal induk"><g class="f"><path d="M18 162h364l-26 26H46z"/><rect x="18" y="148" width="364" height="14"/><rect x="250" y="108" width="34" height="40"/><rect x="262" y="78" width="8" height="30"/></g><path class="s r" d="M100 8v40M170 28v40M240 4v28"/><g class="rd"><ellipse cx="100" cy="68" rx="9" ry="18"/><ellipse cx="170" cy="88" rx="9" ry="18"/><ellipse cx="240" cy="54" rx="9" ry="18"/></g>${W(208)}</svg>`,
+swirl:`<svg viewBox="0 0 400 240" role="img" aria-label="Pusaran angin"><path class="s r" d="M200 110a8 8 0 0 1 8 8a16 16 0 0 1-16 16a28 28 0 0 1-28-28a44 44 0 0 1 44-44a62 62 0 0 1 62 62a82 82 0 0 1-82 82"/><path class="s" d="M40 70h70M20 110h50M300 40h70M330 80h50"/></svg>`,
+tank:`<svg viewBox="0 0 400 240" role="img" aria-label="Siluet tank"><g class="f"><rect x="60" y="152" width="280" height="46" rx="23"/><rect x="92" y="124" width="216" height="30" rx="6"/><rect x="150" y="90" width="104" height="36" rx="10"/><rect x="250" y="100" width="110" height="10" rx="4"/></g><g fill="var(--pn)"><circle cx="100" cy="175" r="11"/><circle cx="150" cy="175" r="11"/><circle cx="200" cy="175" r="11"/><circle cx="250" cy="175" r="11"/><circle cx="300" cy="175" r="11"/></g><path class="rd" d="M202 96l4 9 10 1-8 7 3 10-9-5-9 5 3-10-8-7 10-1z"/></svg>`,
+radio:`<svg viewBox="0 0 400 240" role="img" aria-label="Radio tua"><rect class="s" x="90" y="70" width="220" height="140" rx="16"/><circle class="s" cx="160" cy="140" r="38"/><path class="s" d="M136 140h48M160 116v48"/><circle class="rd" cx="262" cy="108" r="14"/><circle class="s" cx="262" cy="170" r="12"/><path class="s" d="M290 70L340 20"/></svg>`};
+const Q=[
+{ev:"Kapal perang Musashi",q:"Kapal perang Musashi, saudara Yamato, dibangun oleh perusahaan swasta Jepang yang mana?",o:["Mitsubishi HI","Honda","Mitsui","Toyota Jidōsha Kabushiki-gaisha"],a:0,art:"ship",bd:"三菱",
+f:"Musashi lahir di galangan Mitsubishi di Nagasaki, kota yang sama dengan bom atom kedua. Yamato justru dibangun di galangan milik angkatan laut sendiri di Kure. Honda baru berdiri 1948, sepuluh tahun setelah lunas Musashi diletakkan.",
+t:"HI singkatan dari Heavy Industries. Mitsubishi itu zaibatsu: konglomerat keluarga yang memegang bank, pabrik, kapal, dan dagang sekaligus. Empat besarnya Mitsui, Mitsubishi, Sumitomo, dan Yasuda."},
+{ev:"Juli 1941 · Embargo minyak",q:"Embargo minyak dari AS, Inggris, dan Belanda (Juli 1941) membuat Jepang terdesak. Ke arah mana Jepang akhirnya bergerak untuk mencari sumber daya?",o:["Ke utara, ke Siberia","Ke selatan, ke Asia Tenggara","Ke barat, ke India","Ke timur, ke Amerika"],a:1,art:"drums",bd:"南進",
+f:"Embargo membuat cadangan minyak Jepang hanya cukup sekitar 18 bulan. Terdesak, Jepang memilih bergerak ke selatan, ke wilayah Asia Pasifik yang kaya sumber daya.",
+t:"Cita-citanya disebut “Lingkar Kemakmuran Bersama Asia Timur Raya”. Dari hitungan minyak inilah lahir tekad “bergerak cepat sebelum minyak habis”."},
+{ev:"7 Desember 1941 · Pearl Harbor",q:"Serangan Jepang ke Pearl Harbor pada 7 Desember 1941 justru membuat Amerika Serikat menjadi…",o:["Meminta damai kepada Jepang","Tetap netral seperti sebelumnya","Bersatu untuk ikut berperang","Menarik semua pasukan dari Pasifik"],a:2,art:"sunplane",bd:"開戦",
+f:"Sekitar 2.400 orang Amerika tewas, tetapi serangan ini justru menyatukan Amerika untuk berperang. Kapal induk AS kebetulan tidak ada di pelabuhan.",
+t:"Enam kapal induk Jepang berlayar diam-diam lalu meluncurkan dua gelombang pesawat: Zero, Val, dan Kate. Hari itu juga Jepang menyerbu Malaya, Filipina, dan Hong Kong."},
+{ev:"Maret 1942 · Hindia Belanda diduduki",q:"Setelah Belanda menyerah di Jawa pada Maret 1942, Jepang memperkenalkan diri kepada rakyat sebagai…",o:["Saudara Tua","Tuan Besar","Pedagang Asing","Sekutu Belanda"],a:0,art:"volcano",bd:"兄",
+f:"Jepang menjanjikan diri sebagai “Saudara Tua” dan berakhirnya kekuasaan kolonial, sehingga sebagian rakyat menyambutnya. Belanda menyerah di Jawa pada 9 Maret 1942.",
+t:"Jepang lalu membentuk PETA dan Putera, serta mengerahkan rakyat sebagai romusha untuk menopang perang. Pendudukan ini juga membuka jalan bagi proklamasi kemerdekaan 1945."},
+{ev:"4–7 Juni 1942 · Pertempuran Midway",q:"Pertempuran Midway dianggap titik balik perang Pasifik. Berapa kapal induk Jepang yang tenggelam di sana?",o:["Satu","Dua","Empat","Enam"],a:2,art:"dive",bd:"空母",
+f:"Empat kapal induk Jepang tenggelam: Akagi, Kaga, Soryu, dan Hiryu. Hiryu, yang terakhir, sempat membalas sendirian sebelum nasibnya menyusul.",
+t:"Tiga bom dari pembom tukik SBD cukup membakar Soryu dalam hitungan menit. Inisiatif perang berpindah ke Sekutu, dan pilot terlatih yang hilang tak pernah tergantikan."},
+{ev:"Oktober 1944 · Kamikaze pertama",q:"Pasukan Tokkotai atau kamikaze pertama kali dikerahkan pada Oktober 1944, saat Jepang terdesak di…",o:["Hawaii","Filipina","Jawa","Manchuria"],a:1,art:"swirl",bd:"特攻",
+f:"Serangan kamikaze pertama terjadi di Teluk Leyte, Filipina. Kata “kamikaze” berarti angin ilahi.",
+t:"Para pilot memegang nilai leluhur: bushido, kewajiban (giri), kesetiaan pada kaisar dan tanah air, serta kehormatan keluarga. Ribuan pemuda gugur, dan surat-surat terakhir mereka dikenang sebagai wujud cinta pada keluarga."},
+{ev:"9 Agustus 1945 · Nagasaki & Manchuria",q:"Pada 9 Agustus 1945, hari bom atom kedua jatuh di Nagasaki, Jepang juga diserbu lewat Manchuria oleh negara mana?",o:["Inggris","Prancis","Uni Soviet","Belanda"],a:2,art:"tank",bd:"満洲",
+f:"Uni Soviet menyerbu Manchuria lewat Operasi Badai Agustus (9–20 Agustus 1945) dengan sekitar 1,5 juta tentara. Pakta netralitas dibatalkan dan harapan Jepang pada Soviet pupus.",
+t:"Bom atom jatuh di Hiroshima (6 Agustus) dan Nagasaki (9 Agustus). Tank Garda ke-6 menembus Gurun Gobi dan Pegunungan Khingan yang dianggap tak bisa dilalui."},
+{ev:"15 Agustus 1945 · Jepang menyerah",q:"Pada 15 Agustus 1945 rakyat Jepang pertama kali mendengar suara Kaisar Hirohito mengumumkan penyerahan. Lewat apa siaran itu?",o:["Koran pagi","Telepon","Siaran televisi","Radio"],a:3,art:"radio",bd:"玉音",
+f:"Hirohito menyiarkan penyerahan lewat radio, sehingga untuk pertama kalinya rakyat mendengar suara kaisarnya. Penyerahan resmi baru ditandatangani pada 2 September 1945.",
+t:"Setelah perang, Konstitusi 1947 menegaskan jalan damai, dan Shinkansen pertama melaju pada 1964."}];
+let i=0,S=[];
+function go(n){i=Math.max(0,Math.min(Q.length+1,n));draw();scrollTo(0,0)}
+function pick(k){if(i<1||i>Q.length||S[i-1]!=null)return;S[i-1]=k;draw()}
+function again(){S=[];go(1)}
+function draw(){
+ $("#dots").innerHTML=Q.map((_,j)=>`<button class="dt${j===i-1?" on":""}${S[j]!=null?" dn":""}" aria-label="Soal ${j+1}" onclick="go(${j+1})"></button>`).join("");
+ const app=$("#app");
+ if(i===0){app.innerHTML=`<section class="hero"><i class="sun"></i><h1>Kuis Receh: Jepang di Perang Dunia II</h1><p>${Q.length} soal ringan dari peristiwa-peristiwa di materi WW2 versi Jepang. Pilih A sampai D, jawabannya langsung muncul.</p><button class="btn pri" onclick="start()">Mulai kuis</button></section>`;return}
+ if(i>Q.length){const sc=S.filter((p,j)=>p===Q[j].a).length,m=sc>=Q.length-1?"Anak sejarah sejati.":sc>=Math.ceil(Q.length/2)?"Lumayan, receh-receh tadi lumayan menjebak.":"Tenang, jawabannya masih hangat. Coba lagi.";
+  app.innerHTML=`<section class="hero"><div class="sk">${sc}/${Q.length}</div><h1>${m}</h1><div class="chips">${Q.map(x=>`<span class="chip">${x.bd}</span>`).join("")}</div><div class="ct"><button class="btn pri" onclick="again()">Main lagi</button><button class="btn" onclick="go(0)">Ke awal</button></div></section>`;return}
+ const q=Q[i-1],p=S[i-1],d=p!=null,h=p===q.a?"Tepat! ":p>=0&&d?"Belum tepat. ":"";
+ app.innerHTML=`<section class="mn${d?" done":""}"><div><p class="nm">Soal ${i} · ${q.ev}</p><h2 class="q">${q.q}</h2>${q.o.map((t,k)=>`<button class="op${d?(k===q.a?" ok":k===p?" no":" dim"):""}" onclick="pick(${k})"><b>${L[k]}</b><span>${t}</span></button>`).join("")}<div class="ct">${d?`<button class="btn pri" onclick="go(${i+1})">${i<Q.length?"Soal berikutnya":"Lihat skor"}</button>`:`<button class="btn" onclick="pick(-1)">Tampilkan jawaban</button>`}${i>1?`<button class="btn" onclick="go(${i-1})">Sebelumnya</button>`:""}</div></div><div><div class="art">${SV[q.art]}<div class="bd${q.st?" st":""}">${d?q.bd:"?"}</div></div><div class="an"><h3>${h}Jawabannya ${L[q.a]}, ${q.o[q.a]}</h3><p>${q.f}</p><p class="tip">${q.t}</p></div></div></section>`}
+addEventListener("keydown",e=>{const k=e.key.toLowerCase();
+ if(k==="arrowright"){if(i>0&&i<=Q.length&&S[i-1]==null)pick(-1);else go(i+1);return}
+ if(k==="arrowleft"){go(i-1);return}
+ if(k.length!==1)return;
+ const n="abcd".indexOf(k)>=0?"abcd".indexOf(k):"1234".indexOf(k);
+ if(n>=0)pick(n)});
+const touch=()=>matchMedia("(pointer:coarse)").matches;
+function fit(){
+ const W=innerWidth,H=innerHeight,r=document.documentElement,rot=H>W&&touch(),sw=rot?H:W,sh=rot?W:H,ls=sw>sh&&sw>=520;
+ r.classList.toggle("rot",rot);r.classList.toggle("ls",ls);
+ r.style.setProperty("--pw",W+"px");r.style.setProperty("--sw",sw+"px");r.style.setProperty("--sh",sh+"px");
+ r.style.fontSize=Math.max(ls?11:15,Math.min(sw*.0145,sh*.027,34))+"px"}
+function start(){
+ if(innerHeight>innerWidth&&touch()){try{const d=document.documentElement;Promise.resolve(d.requestFullscreen&&d.requestFullscreen()).then(()=>screen.orientation.lock("landscape")).catch(()=>{})}catch(e){}}
+ go(1)}
+addEventListener("resize",fit);addEventListener("orientationchange",()=>setTimeout(fit,150));
+fit();
+draw();
+</script>
+</body>
+</html>
